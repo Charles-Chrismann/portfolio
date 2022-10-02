@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
 
 :root {
@@ -10,5 +11,28 @@
 
     &::-webkit-scrollbar {
         display: none; /* Edge, Chrome, Safari and Opera */
+    }
+}
+
+
+.html {
+    background-color: aqua;
+}
+
+.css {
+    background-color: crimson;
+    top: 0;
+    transform: translate(100%, 0px);
+}
+
+.animate {
+    height: 100vh;
+    width: 100%;
+    position: relative;
+
+    .scene {
+        width: 100%;
+        height: 100%;
+        position: absolute;
     }
 }
