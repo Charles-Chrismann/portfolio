@@ -1,38 +1,134 @@
+// @function box($x, $y, $z) {
+    
+// }
+
+@mixin face($x, $y, $color: yellowgreen) {
+    width: $x;
+    height: $y;
+    position: absolute;
+    border: solid 1px;
+    background-color: $color;
+}
+
+// @mixin faces($x, $y, $z, $color: yellowgreen) {
+   
+//     &
+// }
+
+@mixin box($x, $y, $z, $color: yellowgreen) {
+    // width: $x;
+    // height: $y;
+    background: $color;
+    
+    & > :nth-child(1){
+        @include face(100%, 100%, $color);
+        background-color: brown;
+        // transform: translateZ($z);
+    }
+    // @for $i from 2 through 5 {
+    //     & > :nth-child(#{$i}) {
+    //         @include face(100%, $y, $color);
+    //         transform: rotateZ(calc(90deg * #{$i})) translateY($y) rotateX(90deg);
+    //     }
+    // }
+
+    & > :nth-child(2) {
+        @include face(100%, $y, $color);
+        transform: rotateX(-90deg);
+        transform-origin: bottom;
+        bottom: 0;
+    }
+    & > :nth-child(3) {
+        @include face(100% * 40 / 20, $y, $color);
+        transform: rotateZ(calc(90deg * 3))rotateX(90deg);
+        left: 0;
+        transform-origin: top;
+    }
+    & > :nth-child(4) {
+        @include face(100%, $y, $color);
+        transform: rotateZ(calc(90deg * 4))rotateX(90deg);
+        top: 0;
+        transform-origin: top;
+    }
+    & > :nth-child(5) {
+        @include face(100% * 40 / 20, 100%, $color);
+        transform: rotateZ(calc(90deg * 5)) rotateX(-90deg);
+        right: 0;
+        transform-origin: right;
+    }
+}
+
+.box {
+    position: absolute;
+    display: grid;
+    place-items: center;
+    width: 20%;
+    height: 40%;
+    @include box(20%, 40%, 20px, greenyellow);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    overflow-x: hidden;
+    transform-style: preserve-3d;
 }
 
-:root {
-    scrollbar-width: none;  /* Firefox */
-    -ms-overflow-style: none;  
-
-    &::-webkit-scrollbar {
-        display: none; /* Edge, Chrome, Safari and Opera */
-    }
-}
-
-
-.html {
-    background-color: aqua;
-}
-
-.css {
-    background-color: crimson;
-    top: 0;
-    transform: translate(100%, 0px);
-}
-
-.animate {
-    height: 100vh;
+.camera {
     width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    outline: solid 1px red;
     position: relative;
+    display: grid;
+    place-items: center;
 
     .scene {
-        width: 100%;
-        height: 100%;
         position: absolute;
+        // transform: rotateX(45deg) rotateZ(-45deg) scale(0.05);
+        transform: rotateX(45deg) rotateZ(-45deg) scale(0.1);
+        aspect-ratio: 1 / 1;
+        // scale: 0.05;
+        // width: 1000px;
+        width: 10000px;
+        border: solid 10px;
+        border-left: solid 10px red;
+        background-color: red;
+        font-size: 200px;
+        display: grid;
+        place-items: center;
     }
 }
+
+// .box {
+//     position: absolute;
+//     width: 20%;
+//     height: 20%;
+//     .wall {
+//         position: absolute;
+//         inset: 0;
+//         background-color: green;
+//         height: 100%;
+//         width: 100%;
+//         // transform: rotateZ(calc(90deg * var(--i))) translateX(50%) rotateX(90deg);
+            
+//     }
+
+//     .wall:first-of-type{
+//         // transform: rotateZ(calc(90deg * var(--i))) translateX(50%);
+//         transform-origin: bottom center;
+//         // transform: rotateZ(calc(90deg * var(--i))) translateX(50%) rotateX(-90deg);
+//         background-color: blue;
+//     }
+
+//     .wall:last-of-type{
+//         background-color: blue;
+//     }
+// }
+
+
+
+
+
+
+
