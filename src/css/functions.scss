@@ -1,0 +1,72 @@
+@mixin world {
+    & > .face:nth-of-type(1){
+        background-color: brown;
+        transform: rotateY(-90deg) translateX(100%) rotateY(90deg);
+
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border: solid 1px;
+        background: #0d004e;
+    }
+
+    & > .face:nth-child(2) {
+        transform: rotateX(-90deg);
+        transform-origin: bottom;
+        bottom: 0;
+        // display: none;
+
+        // width: 100%;
+        width: 100%;
+        // aspect-ratio: 1 / 1;
+        height: 100%;
+        position: absolute;
+        border: solid 1px;
+        background: red;
+    }
+    & > .face:nth-child(3) {
+        
+        left: 0;
+        top: 0;
+        transform: rotateY(-90deg);
+        transform-origin: top left;
+
+
+        // width: 100%;
+        // width: 70 * 20 * 2px;
+        width: 100%;
+        // width: 100%;
+        // aspect-ratio: 1 / 1;
+        height: 100%;
+        position: absolute;
+        border: solid 1px;
+        background: blue;
+
+
+    }
+    & > .face:nth-child(4) {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border: solid 1px;
+        background: #0d004e;
+        transform: rotateZ(calc(90deg * 4))rotateX(90deg);
+        top: 0;
+        transform-origin: top;
+    }
+    & > .face:nth-child(5) {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        border: solid 1px;
+        background: #0d004e;
+
+        right: 0;
+        // transform: rotateZ(270deg)rotateX(90deg);
+        bottom: 0;
+        // transform: rotate3d(2,0,0, 90deg);
+        transform: rotateY(270deg) rotateZ(450deg);
+        transform-origin: bottom right;
+        
+    }
+}
