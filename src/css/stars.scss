@@ -8,10 +8,10 @@ $starStartOffset: 600px;
 $starOneScrollDuration: 100s;
 $starTwoScrollDuration: 125s;
 $starThreeScrollDuration: 175s;
-$numStarOneStars: 170;
-$numStarTwoStars: 70;
-$numStarThreeStars: 20;
-$numComet: 10;
+$numStarOneStars: 17;
+$numStarTwoStars: 7;
+$numStarThreeStars: 2;
+$numComet: 1;
 
 @function create-stars($n) {
     $stars: "#{random($starFieldWidth)}px #{random($starFieldHeight)}px #FFF";
