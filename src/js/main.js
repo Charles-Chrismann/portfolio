@@ -1,3 +1,4 @@
+"use strict"
 a = 0.40
 b = 0.8
 c = 3
