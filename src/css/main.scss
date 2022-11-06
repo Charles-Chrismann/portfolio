@@ -1,0 +1,1423 @@
+@use './anim';
+
+@font-face {
+    font-family: "Montserrat";
+    src: url("./../assets/fonts/Montserrat-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "Oswald";
+    src: url("./../assets/fonts/Oswald-VariableFont_wght.ttf");
+}
+
+@font-face {
+    font-family: "AlfaSlab";
+    src: url("./../assets/fonts/AlfaSlabOne-Regular.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    overflow-x: hidden;
+    font-family: "Oswald",sans-serif;
+}
+
+a {
+    color: white;
+    text-decoration: none;
+}
+
+
+:root {
+    scrollbar-width: none;  /* Firefox */
+    -ms-overflow-style: none;  
+
+    &::-webkit-scrollbar {
+        display: none; /* Edge, Chrome, Safari and Opera */
+    }
+}
+
+body {
+    // height: 300vh;
+    // position: relative;
+    // display: grid;
+    // place-items: center;
+    // overflow: hidden;
+    height: 10000px;
+    // height: 100vh;
+    background: #494949;
+    
+}
+
+main {
+    height: 10000px;
+    width: 10000px;
+    // background-color: #1a1a1a;
+    // background: linear-gradient(to left, #333, #eee 50%, #333 50%);
+    // background: rgb(0,0,0);
+    // background: radial-gradient(circle, rgba(0,0,0,1) 0%, rgba(255,255,255,1) 100%); 
+    background: rgb(255,255,255);
+    background-image: radial-gradient(circle, rgba(255,255,255,1) 0%, rgba(0,0,0,1) 100%); 
+    
+    // width: 2000px;
+    // height: 2000px;
+
+    position: absolute;
+    top: 0;
+    // top: 50%;
+    left: 50%;
+    // margin-left: -5000px;
+    transform: translateX(-50%);
+    // transform: translate(-50%, -50%);
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    // justify-content: space-around;
+    // background-image: url('../../index.jpg');
+    // background-position: center;
+    // background-size: cover;
+    // background-repeat: no-repeat;
+}
+
+.loader {
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    --size: 100vw;
+    @media screen and (max-aspect-ratio: 1 / 1) {
+        --size: 100vh;
+    }
+    aspect-ratio: 1 / 1;
+    background-color: #000000;
+    z-index: 10;
+    animation: loader 1s ease-in-out forwards;
+    border-radius: 50%;
+    pointer-events: none;
+}
+
+main .bg__svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    padding: 20vh 50vw;
+    & > svg {
+        height: 100%;
+        width: 100%;
+    }
+}
+
+.general {
+    width: 100vw;
+    height: 100vh;
+    // opacity: 0.5;
+    background: black;
+
+    position: absolute;
+    // top: -10vh;
+    // top: calc((2vh + 2vw) * -1);
+    // left: calc((2vh + 2vw) * 1);
+
+    top: -50px;
+    left: 50%;
+    transform: translateX(-50%);
+    border: solid 50px white;
+    box-sizing: content-box;
+    overflow: hidden;
+    .me {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: #000000;
+        overflow: hidden;
+        padding: 20vh 20%;
+
+        @media screen and (max-width:1023px) {
+            padding-left: 64px;
+            padding-right: 64px;
+            
+        }
+        .me__lastName {
+            color: white;
+            text-transform: uppercase;
+            font-size: 6rem;
+            font-weight: 1000;
+            font-family: "Montserrat";
+            text-align: center;
+
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translate(-50%, -50%) rotate(-90deg) translate(-100vh, 50%);
+            margin-left: 64px;
+            animation: me__lastName 1s 1s ease-in-out forwards;
+
+            @media screen and (max-width:1023px) {
+                margin-left: 0px;
+                font-size: 3rem;
+            }
+        }
+        .me__hi {
+            display: inline;
+            color: white;
+            font-size: 2rem;
+            span {
+                font-size: 3rem;
+
+                &:nth-child(1) {
+                    
+                }
+            }
+            .me__firstName {
+                font-family: "Montserrat";
+            }
+        }
+        .me__alias {
+            padding-top: 5%;
+            color: white;
+            font-family: "Montserrat";
+        }
+        .me__description {
+            padding-top: 5%;
+            color: white;
+            font-size: 1rem;
+        }
+        .me__quote {
+            color: white;
+            font-size: 1rem;
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translate(-50%);
+            q, figcaption {
+                display: inline;
+            }
+        }
+    }
+    .myStacks {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-color: white;
+        overflow-y: hidden;
+
+        .myStacks__stack {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            
+            .stack__container {
+                height: 100%;
+                width: 100%;
+                padding: 2rem;
+                // background-color: yellow;
+                overflow: hidden;
+
+                span {
+                    color: #FFFFFF;
+                }
+                h2 {
+                    text-align: center;
+                    font-size: 3rem;
+                    height: 10%;
+                    white-space: nowrap;
+                }
+
+                .stack__mainContent {
+                    height: 90%;
+                    width: 100%;
+                    overflow: hidden;
+                    z-index: 10;
+                    position: relative;
+                    
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    @media screen and (max-width: 1023px) {
+                        flex-direction: column;
+                    }
+                    .stack__imgs {
+                        width: 50%;
+                        height: 100%;
+                        overflow: hidden;
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        flex-wrap: wrap;
+                        @media screen and (max-width: 1023px) {
+                            width: 100%;
+                            height: 40%;
+                        }
+                        img {
+                            margin: 1rem;
+                            // display: none;
+                        }
+                        a {
+                            width: 30%;
+                            margin: 1rem;
+                            img {
+                                width: 100%;
+                                margin: 0rem;
+                            }
+                        }
+                    }
+
+                    .stack__previewContainer {
+                        width: 50%;
+                        height: 100%;
+                        display: grid;
+                        place-items: center;
+                        background-color: #FFFFFF;
+                        border-radius: 1rem;
+                        box-shadow: inset 40px 40px 50px grey, inset -40px -40px 50px grey;
+                        @media screen and (max-width: 1023px) {
+                            width: 100%;
+                            height: 60%;
+                        }
+                        .preview__container {
+                            width: 50%;
+                            aspect-ratio: 1 / 1;
+                            display: flex;
+                            align-items: center;
+                            flex-direction: column;
+                            justify-content: center;
+                            overflow: visible;
+    
+                            .preview_top {
+                                position: relative;
+                                border: solid 4px;
+                                border-radius: 16px;
+                                width: 100%;
+                                aspect-ratio: 16 / 9;
+                                padding: 5%;
+                                animation: screen 20s linear forwards;
+                                animation-iteration-count: 1;
+                                animation-iteration-count: infinite;
+                                // animation-play-state: paused;
+                                // animation-delay: -10s;
+    
+                                .preview__cam {
+                                    width: 4%;
+                                    aspect-ratio: 1 / 1;
+                                    border: solid 4px;
+                                    border-radius: 50%;
+                                    position: absolute;
+                                    left: 50%;
+                                    top: 1%;
+                                    transform: translateX(-50%);
+                                }
+    
+                                .preview__screen {
+                                    height: 100%;
+                                    border: solid 4px;
+                                    animation: inscreen 20s linear forwards;
+                                    animation-iteration-count: infinite;
+                                    // animation-play-state: paused;
+                                }
+                            }
+                            
+                            .bot__top {
+                                width: 10%;
+                                height: 10%;
+                                border-left: solid 4px;
+                                border-right: solid 4px;
+                                border-bottom: solid 4px;
+                                
+                                // aspect-ratio: 6 / 4;
+                                position: relative;
+                                animation: keypadFeet 20s linear forwards;
+                                animation-iteration-count: infinite;
+                                // animation-play-state: paused;
+                                // animation-delay: -4s;
+                            }
+                            .bot__bot {
+                                width: 10%;
+                                height: 2.5%;
+                                // aspect-ratio: var(--ARHeight) / 100;
+                                // aspect-ratio: 300 / 100;
+                                border-bottom: solid 4px;
+                                // border-top: none;
+                                // display: flex;
+                                position: relative;
+                                top: -4px;
+                                overflow: visible;
+                                animation: keyboard 20s linear forwards;
+                                animation-iteration-count: infinite;
+                                // animation-play-state: paused;
+                                // animation-delay: -1s;
+    
+                                &::before,
+                                &::after {
+                                    content: '';
+                                    display: block;
+                                    border: solid 4px;
+                                    height: calc(100% - 4px);
+                                    // aspect-ratio: 2 / 1;
+                                    width: 75%;
+                                    position: absolute;
+                                    // transform: tr;
+                                    // bottom: -4px;
+                                    animation: br 20s infinite forwards;
+                                    animation-iteration-count: infinite;
+                                    // animation-play-state: paused;
+                                    // animation-delay: -1s;
+                                }
+                                &::before {
+                                    --br: 0 0 0 50%;
+                                    right: calc(100% - 4px);
+                                    border-right: none;
+                                }
+                                &::after {
+                                    --br: 0 0 50% 0;
+                                    left: calc(100% - 4px);
+                                    border-left: none;
+                                }
+                                .bot__hole {
+                                    position: absolute;
+                                    top: 0;
+                                    width: 20%;
+                                    border: solid 4px;
+                                    left: 50%;
+                                    transform: translateX(-50%);
+                                    border-bottom-left-radius: 50%;
+                                    border-bottom-right-radius: 50%;
+                                    animation: hole 20s infinite forwards;
+                                    animation-iteration-count: infinite;
+                                }
+                            }
+                        }
+                        .preview__screen {
+                            * { overflow: hidden; }
+                            
+                            .screen__header {
+                                height: 20%;
+                                border-bottom: solid 2px;
+                                padding: 0 1%;
+                                display: flex;
+                                justify-content: space-between;
+                                align-items: center;
+    
+                                animation: header 20s linear forwards;
+                                animation-iteration-count: infinite;
+    
+    
+                                .header__logo {
+                                    margin-right: 12%;
+                                    width: 8%;
+                                    aspect-ratio: 1 / 1;
+                                    border: solid 2px;
+                                    position: relative;
+    
+                                    &::before,
+                                    &::after {
+                                        content: '';
+                                        position: absolute;
+                                        border: solid 1px;
+                                        top: 50%;
+                                        left: 50%;
+                                        width: 300%;
+                                        transform: translate(-50%, -50%) rotate(45deg);
+                                    }
+                                    &::after {
+                                        transform: translate(-50%, -50%) rotate(-45deg);
+                                    }
+                                }
+    
+                                .header__nav {
+                                    height: 80%;
+                                    width: 30%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+    
+                                    .nav__item {
+                                        width: 20%;
+                                        height: 20%;
+                                        background-color: #000000;
+                                        border: solid 2px;
+                                        border-radius: 32px;
+    
+                                        animation: nav__item 20s linear forwards;
+                                        animation-iteration-count: infinite;
+                                    }
+                                }
+    
+                                .header__log {
+                                    height: 100%;
+                                    width: 20%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+    
+                                    .log__signup,
+                                    .log__login {
+                                        height: 50%;
+                                        width: 45%;
+                                        border: solid 2px;
+                                    }
+                                }
+                            }
+                            .screen__body {
+                                padding-top: 1%;
+                                width: 100%;
+                                height: 80%;
+    
+                                animation: body 20s linear forwards;
+                                animation-iteration-count: infinite;
+    
+                                .body__list {
+                                    padding: 0 8%;
+                                    width: 100%;
+                                    height: 50%;
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: space-between;
+    
+                                    animation: body__list 20s linear forwards;
+                                    animation-iteration-count: infinite;
+                                    .list__item {
+                                        height: 100%;
+                                        width: 25%;
+                                        border: solid 1px;
+                                        display: flex;
+                                        flex-direction: column;
+                                        align-items: center;
+                                        justify-content: space-between;
+                                        padding: 1%;
+                                        
+                                        .item__img {
+                                            width: 40%;
+                                            aspect-ratio: 1 / 1;
+                                            border-radius: 50%;
+                                            border: solid 2px;
+                                            position: relative;
+    
+                                            &::before,
+                                            &::after {
+                                                content: '';
+                                                position: absolute;
+                                                width: 100%;
+                                                border: solid 1px;
+                                                top: 50%;
+                                                left: 50%;
+                                                width: 100%;
+                                                transform: translate(-50%, -50%) rotate(45deg);
+                                            }
+                                            &::after {
+                                                transform: translate(-50%, -50%) rotate(-45deg);
+                                            }
+                                        }
+    
+                                        .item__desc {
+                                            height: 30%;
+                                            width: 100%;
+                                            .desc__spans {
+                                                display: flex;
+                                                align-items: center;
+                                                justify-content: space-between;
+                                                width: 100%;
+                                                height: 50%;
+    
+                                                span {
+                                                    height: 0;
+                                                    border: solid 2px #000000;
+                                                    border-radius: 16px;
+                                                }
+    
+                                                &:nth-child(1) span {
+                                                    width: 25%;
+                                                }
+    
+                                                &:nth-child(2) span {
+                                                    width: 20%;
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                .body__messages {
+                                    padding: 2% 8% 0 8%;
+                                    height: 50%;
+                                    animation: body__messages 20s linear forwards;
+                                    animation-iteration-count: 1;
+                                    animation-iteration-count: infinite;
+    
+                                    .messages__message {
+                                        margin-bottom: 1%;
+                                        border: solid 1px;
+                                        height: 40%;
+                                        padding: 1%;
+                                        display: flex;
+                                        flex-direction: column;
+                                        justify-content: space-between;
+                                        animation: messages__message 20s linear forwards;
+                                        animation-iteration-count: infinite;
+                                        
+                                        .message__title {
+                                            height: 0;
+                                            border: solid 2px;
+                                            border-radius: 16px;
+                                        }
+                                        .message__content {
+                                            display: flex;
+                                            flex-direction: column;
+                                            justify-content: space-between;
+                                            height: 40%;
+                                            .content__spans {
+                                                width: 100%;
+                                                align-items: center;
+                                                display: flex;
+                                                span {
+                                                    height: 0;
+                                                    border: solid grey 1px;
+                                                    border-radius: 16px;
+                                                    margin-right: 1%;
+                                                }
+                                                
+                                            }
+                                        }
+                                        &:nth-child(1),
+                                        &:nth-child(4) {
+                                            .message__title {
+                                                width: 20%;
+                                            }
+                                            .message__content {
+    
+                                                .content__spans:nth-child(1) {
+    
+                                                    span{
+                                                        &:nth-child(1) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(2) {
+                                                            width: 12%;
+                                                        }
+                                                        &:nth-child(3) {
+                                                            width: 10%;
+                                                        }
+                                                        &:nth-child(4) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(5) {
+                                                            width: 14%;
+                                                        }
+                                                        &:nth-child(6) {
+                                                            width: 10%;
+                                                        }
+                                                    }
+                                                }
+                                                .content__spans:nth-child(2) {
+    
+                                                    span{
+                                                        &:nth-child(1) {
+                                                            width: 6%;
+                                                        }
+                                                        &:nth-child(2) {
+                                                            width: 8%;
+                                                        }
+                                                        &:nth-child(3) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(4) {
+                                                            width: 8%;
+                                                        }
+                                                        &:nth-child(5) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(6) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(7) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(8) {
+                                                            width: 8%;
+                                                        }
+                                                    }
+                                                }  
+                                            }
+                                        }
+                                        &:nth-child(2),
+                                        &:nth-child(3),
+                                        &:nth-child(5) {
+                                            .message__title {
+                                                width: 24%;
+                                            }
+                                            .message__content {
+    
+                                                .content__spans:nth-child(1) {
+                                                    span{
+                                                        &:nth-child(1) {
+                                                            width: 6%;
+                                                        }
+                                                        &:nth-child(2) {
+                                                            width: 8%;
+                                                        }
+                                                        &:nth-child(3) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(4) {
+                                                            width: 8%;
+                                                        }
+                                                        &:nth-child(5) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(6) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(7) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(8) {
+                                                            width: 8%;
+                                                        }
+                                                    }
+                                                }
+                                                .content__spans:nth-child(2) {
+                                                    
+                                                    span{
+                                                        &:nth-child(1) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(2) {
+                                                            width: 12%;
+                                                        }
+                                                        &:nth-child(3) {
+                                                            width: 10%;
+                                                        }
+                                                        &:nth-child(4) {
+                                                            width: 4%;
+                                                        }
+                                                        &:nth-child(5) {
+                                                            width: 14%;
+                                                        }
+                                                        &:nth-child(6) {
+                                                            width: 10%;
+                                                        }
+                                                    }
+                                                    
+                                                }  
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            &.myStacks__stack-- {
+                
+                &proto {
+                    background-color: #000000;
+                    position: absolute;
+                    inset: 0;
+                    
+                    .stack__container {
+                        h2 {
+                            color: #FFFFFF;
+                        }
+
+                        .stack__mainContent {
+                            width: 100%;
+                            img {
+                                border-radius: 18%;
+                                width: 30%;
+                                @media screen and (max-width: 1023px) {
+                                    width: 20%;
+                                }
+                                &:last-child {
+                                    border-radius: 0;
+                                }
+                            }
+                            .stack__imgs {
+                                a {
+                                    @media screen and (max-width: 1023px) {
+                                        width: 20%;
+                                    }
+                                }
+                            }
+                            
+                        }
+                        
+                        & > span {
+                            position: absolute;
+                            font-size: 12rem;
+                            font-family: "AlfaSlab";
+                            &:nth-child(1) {
+                                left: 0;
+                                top: 0;
+                                transform: rotate(-45deg) translate(0%, -50%);
+                            }
+                            &:nth-child(2) {
+                                right: 0;
+                                bottom: 0;
+                                transform: rotate(135deg) translate(0%, -50%);
+                            }
+                        }
+                    }
+                }
+                &front {
+                    position: absolute;
+                    inset: 0;
+                    background-color: #FFFFFF;
+                    z-index: 11;
+                    
+                    .stack__container {
+                        span {
+                            color: #000000;
+                        }
+                        .stack__mainContent {
+                            img {
+                                width: 30%;
+                                @media screen and (max-width: 1023px) {
+                                    width: 20%;
+                                }
+                            }
+                        }
+                        & > span {
+                            position: absolute;
+                            font-size: 12rem;
+                            font-family: "AlfaSlab";
+                            z-index: -1;
+                            &:nth-child(1) {
+                                left: 0;
+                                top: 0;
+                                transform: rotate(-45deg) translate(0%, -50%);
+                            }
+                            &:nth-child(2) {
+                                right: 0;
+                                bottom: 0;
+                                transform: rotate(135deg) translate(0%, -50%);
+                            }
+                        }
+                    }
+                }
+                &back {
+                    z-index: 12;
+                    background-color: #000000;
+                    .stack__container {
+                        span {
+                            color: #FFFFFF;
+                            z-index: 12;
+                        }
+                        h2 {
+                            color: #FFFFFF;
+                        }
+                        .stack__mainContent {
+                            img {
+                                width: 30%;
+                            }
+                            .stack__previewContainer {
+                                border-radius: 0;
+                                box-shadow: none;
+                                background-image: url("./../assets/img/api.gif");
+                                background-position: center;
+                                background-size: cover;
+                            }
+                        }
+                        & > span {
+                            position: absolute;
+                            font-size: 12rem;
+                            font-family: "AlfaSlab";
+                            &:nth-child(1) {
+                                left: 0;
+                                top: 0;
+                                transform: rotate(-45deg) translate(0%, -50%);
+                            }
+                            &:nth-child(2) {
+                                right: 0;
+                                bottom: 0;
+                                transform: rotate(135deg) translate(0%, -50%);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// @media screen and (max-width: 1024px) {
+//     .stack__imgs {
+//         display: flex;
+//     }
+//     .stack__container {
+//         flex-direction: column;
+//         .stack__previewContainer {
+//             height: 80% !important;
+
+//         }
+//     }
+// }
+
+@keyframes loader {
+    0% {
+        width: calc(2 * var(--size));
+        border: solid 4px #FFFFFF;
+    }
+    100% {
+        width: 0;
+        border: solid 0px #FFFFFF;
+    }
+}
+
+@keyframes screen {
+    0% {
+        width: 100%;
+        border-radius: 16px;
+    }
+    10% {
+        width: 100%;
+        border-radius: 16px;
+    }
+    15% {
+        width: 85%;
+        border-radius: 16px 16px 0 0;
+        aspect-ratio: 16 / 9;
+    }
+    25% {
+        width: 85%;
+        border-radius: 16px 16px 0 0;
+        aspect-ratio: 16 / 9;
+    }
+    35% {
+        width: 85%;
+        border-radius: 16px 16px 0 0;
+        aspect-ratio: 16 / 9;
+    }
+    40% {
+        border-radius: 16px;
+        width: 60%;
+        aspect-ratio: 3 / 4;
+        padding: 5%;
+    }
+    50% {
+        width: 60%;
+        aspect-ratio: 3 / 4;
+        padding: 5%;
+    }
+    60% {
+        width: 60%;
+        aspect-ratio: 3 / 4;
+        padding: 5%;
+    }
+    65% {
+        width: 60%;
+        aspect-ratio: 10 / 18;
+        padding: 0%;
+    }
+    75% {
+        width: 60%;
+        aspect-ratio: 10 / 18;
+        padding: 0%;
+    }
+    85% {
+        width: 60%;
+        aspect-ratio: 10 / 18;
+        padding: 0%;
+    }
+    90% {
+        aspect-ratio: 16 / 9;
+        width: 100%;
+        border-radius: 16px;
+        padding: 5%;
+    }
+    100% {
+        width: 100%;
+        border-radius: 16px;
+    }
+}
+
+@keyframes inscreen {
+    0% {
+        border-radius: 0px;
+        border-width: 4px;
+    }
+    60% {
+        border-radius: 0px;
+        border-width: 4px;
+    }
+    65% {
+        border-radius: 16px;
+        border-width: 0px;
+    }
+    85% {
+        border-radius: 16px;
+        border-width: 0px;
+    }
+    90% {
+        border-radius: 0px;
+        border-width: 4px;
+    }
+    100% {
+        border-radius: 0px;
+        border-width: 4px;
+    }
+}
+
+@keyframes keypadFeet {
+    0% {
+        height: 10%;
+        border-width: 4px;
+    }
+    10% {
+        height: 10%;
+        border-width: 4px;
+    }
+    12.5% {
+        height: 0%;
+        border-width: 0px;
+    }
+    15% {
+        // height: 0%;
+        // border-width: 0px;
+    }
+    25% {
+        height: 0%;
+    }
+    35% {
+        height: 0%;
+    }
+    40% {
+        
+    }
+    50% {
+        
+    }
+    60% {
+        
+    }
+    65% {
+        height: 0%;
+    }
+    75% {
+        height: 0%;
+    }
+    85% {
+        height: 0%;
+        border-width: 0px;
+    }
+    90% {
+        height: 10%;
+        border-width: 4px;
+    }
+    100% {
+        height: 10%;
+        border-width: 4px;
+    }
+}
+
+@keyframes hole {
+    0% {
+        border-width: 0px;
+        height: 0;
+    }
+    10% {
+        border-width: 0px;
+        height: 0;
+    }
+    15% {
+        height: 40%;
+        border-width: 4px;
+    }
+    25% {
+    }
+    35% {
+        height: 40%;
+        border-width: 4px;
+    }
+    40% {
+        border-width: 0px;
+        height: 0%;
+    }
+    50% {
+        
+    }
+    60% {
+        
+    }
+    65% {
+    }
+    75% {
+    }
+    85% {
+    }
+    90% {
+    }
+    100% {
+        border-width: 0px;
+        height: 0%;
+    }
+}
+
+@keyframes keyboard {
+    0% {
+        width: 10%;
+        height: 2.5%;
+        border-width: 4px;
+    }
+    10% {
+        width: 10%;
+        height: 2.5%;
+        border-width: 4px;
+    }
+    12.5% {
+        width: 10%;
+        height: 2.5%;
+        border-width: 4px;
+    }
+    15% {
+        width: 80%;
+        height: 10%;
+        border-width: 4px;
+    }
+    25% {
+        width: 80%;
+        height: 10%;
+        border-width: 4px;
+    }
+    35% {
+        width: 80%;
+        height: 10%;
+        border-width: 4px;
+    }
+    40% {
+        height: 0%;
+        width: 60%;
+        border-width: 0px;
+    }
+    50% {
+        border-width: 0px;
+    }
+    60% {
+        border-width: 0px;
+    }
+    65% {
+        border-width: 0px;
+    }
+    75% {
+        border-width: 0px;
+    }
+    85% {
+        width: 10%;
+        height: 0%;
+        border-width: 0px;
+    }
+    90% {
+        width: 10%;
+        height: 2.5%;
+        border-width: 4px;
+    }
+    100% {
+        width: 10%;
+        height: 2.5%;
+        border-width: 4px;
+    }
+}
+
+@keyframes br {
+    0% {
+        border-radius: 0px;
+        width: 50%;
+        border-width: 4px;
+    }
+    10% {
+        border-radius: 0px;
+        width: 50%;
+        border-width: 4px;
+    }
+    15% {
+        width: 20%;
+        border-radius: var(--br);
+        border-width: 4px;
+    }
+    25% {
+        border-radius: var(--br);
+        border-width: 4px;
+    }
+    35% {
+        border-radius: var(--br);
+        border-width: 4px;
+    }
+    40% {
+        border-width: 0px;
+    }
+    50% {
+        border-width: 0px;
+    }
+    60% {
+        border-width: 0px;
+    }
+    65% {
+        border-width: 0px;
+    }
+    75% {
+        border-width: 0px;
+    }
+    85% {
+        border-width: 0px;
+        width: 20%;
+        border-radius: 0;
+    }
+    90% {
+        border-width: 4px;
+        width: 50%;
+    }
+    100% {
+        border-width: 4px;
+        width: 50%;
+    }
+}
+
+
+// inscreen elements proto
+
+@keyframes header {
+    0% {
+        height: 20%;
+    }
+    35% {
+        height: 20%;
+    }
+    40% {
+        height: 10%;
+    }
+    85% {
+        height: 10%;
+    }
+    90% {
+        height: 20%;
+    }
+    100% {
+        height: 20%;
+    }
+}
+
+@keyframes nav__item {
+    0% {
+        opacity: 1;
+    }
+    35% {
+        opacity: 1;
+    }
+    40% {
+        opacity: 0;
+    }
+    85% {
+        opacity: 0;
+    }
+    90% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes body {
+    0% {
+        height: 80%;
+    }
+    35% {
+        height: 80%;
+    }
+    40% {
+        height: 90%;
+    }
+    85% {
+        height: 90%;
+    }
+    90% {
+        height: 80%;
+    }
+    100% {
+        height: 80%;
+    }
+}
+
+@keyframes body__list {
+    0% {
+        height: 50%;
+    }
+    35% {
+        height: 50%;
+    }
+    40% {
+        height: 20%;
+    }
+    85% {
+        height: 20%;
+    }
+    90% {
+        height: 50%;
+    }
+    100% {
+        height: 50%;
+    }
+}
+
+@keyframes body__messages {
+    0% {
+        height: 50%;
+    }
+    35% {
+        height: 50%;
+    }
+    40% {
+        height: 80%;
+    }
+    85% {
+        height: 80%;
+    }
+    90% {
+        height: 50%;
+    }
+    100% {
+        height: 50%;
+    }
+}
+
+@keyframes messages__message {
+    0% {
+        height: 40%;
+    }
+    35% {
+        height: 40%;
+    }
+    40% {
+        height: 20%;
+    }
+    85% {
+        height: 20%;
+    }
+    90% {
+        height: 40%;
+    }
+    100% {
+        height: 40%;
+    }
+}
+
+.project {
+    position: fixed;
+    height: 90vh;
+    aspect-ratio: 1 / 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: calc((100vw - 90vh) / 2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    
+    background-color: #000000;
+    border: calc(1vh + 1vw) solid white;
+    
+    @media screen and (max-aspect-ratio: 1/1) {
+        height: initial;
+        width: 90vw;
+        right: calc(5vh);
+    }
+
+
+    .project__title {
+        color: #FFFFFF;
+        @media screen and (max-width: 640px) {
+            font-size: 1rem;
+        }
+    }
+    .project__desc {
+        color: white;
+        a {
+            text-decoration: underline;
+        }
+    }
+    .project__img {
+        width: 100%;
+        height: 30%;
+        object-fit: cover;
+        object-position: center;
+    }
+    .project__l {
+        color: #FFFFFF;
+    }
+    .project__langages {
+        border-top: solid 2px #FFFFFF;
+        padding-top: 1rem;
+        height: 20%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        img {
+            height: 100%;
+        }
+    }
+}
+
+.contact {
+    position: fixed;
+    height: 90vh;
+    aspect-ratio: 1 / 1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    right: calc((100vw - 90vh) / 2);
+    
+    background-color: #000000;
+    border: calc(1vh + 1vw) solid white;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    
+    @media screen and (max-aspect-ratio: 1/1) {
+        height: initial;
+        width: 90vw;
+        right: calc(5vh);
+    }
+
+    h2 {
+        color: #FFFFFF;
+        text-align: center;
+        font-size: 3rem;
+        white-space: nowrap;
+        @media screen and (max-width: 640px) {
+            font-size: 2rem;
+        }
+    }
+
+    p {
+        color: #FFFFFF;
+        font-size: 2rem;
+        @media screen and (max-width: 640px) {
+            font-size: 1rem;
+        }
+    }
+
+    div {
+        width: 100%;
+        height: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+        a {
+            width: 40%;
+            img {
+                width: 100%;
+            }
+        }
+    }
+}
